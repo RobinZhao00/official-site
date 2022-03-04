@@ -1,19 +1,24 @@
 import logo from './logo.svg';
+import { useRoutes } from "react-router-dom";
+import { ThemeProvider } from 'react-bootstrap';
 import './App.scss';
+import routes from "./routes";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <button type="button" className="btn btn-primary">
-        Notifications <span className="badge bg-secondary">4</span>
-      </button>
-      <h1>Example heading <span className="badge bg-secondary">New</span></h1>
-      <h2>Example heading <span className="badge bg-secondary">New</span></h2>
-      <h3>Example heading <span className="badge bg-secondary">New</span></h3>
-      <h4>Example heading <span className="badge bg-secondary">New</span></h4>
-      <h5>Example heading <span className="badge bg-secondary">New</span></h5>
-      <h6>Example heading <span className="badge bg-secondary">New</span></h6>
-    </div>
+    <ThemeProvider
+      breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+    >
+      <Header/>
+      <div className="container content-container">
+        {
+          useRoutes(routes)
+        }
+      </div>
+      <Footer/>
+    </ThemeProvider>
   );
 }
 
